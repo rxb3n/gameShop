@@ -1,6 +1,6 @@
 <template>
-    <div class="popup">
-        <div class="popup-inner">
+    <div  class="popup" id="closer">
+        <div class="popup-inner" >
             <slot />    
         </div>
     </div>
@@ -16,14 +16,16 @@ export default {
     return {
       items: [],
       api_url: "http://localhost:1337",
-      activePop: false
+      activePop: true
     }
   },
   
   beforeMount() {
     const items = useItemStore();
-    this.activePop = items.isActive
+    this.activePop = items.isActive;
+    
 },
+
 
 }
 
@@ -48,5 +50,6 @@ export default {
     background-color: white;
     padding: 32px;
 }
+
 
 </style>

@@ -30,24 +30,24 @@
 
 @media screen and (max-width: 1000px) {
   .hamb-menu {
-    display: block;
+    display: block !important;
     margin-top: 1%;
   }
   .nav-container {
     display: block;
   }
   .nav-top {
-    display: block;
+    display: none !important;
   }
 
   .nav-bottom {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    width: 85%;
+    display: flex !important;
+    justify-content: space-between !important;
   }
 
   .nav-elements {
-    margin-right:25%;
+    display: none !important;
   }
 
   .search-container {

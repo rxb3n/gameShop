@@ -126,4 +126,13 @@ background-size: 1800% 1800%;
     font-size: 1    8px;
 }
 
+@media screen and (max-width: 1000px) {
+    .footer-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        font-size: 0.5em;
+    }
+}
+
 </style>

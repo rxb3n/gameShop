@@ -32,9 +32,4 @@ export const useItemStore = defineStore("items", {
               this.articles = [];
             }
     },
-    
-    toggleActive: () => {
-      this.isActive = !this.isActive
-      console.log(this.isActive)
-    }
 })

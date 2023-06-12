@@ -1,4 +1,4 @@
-<template>
+<template >
 
   <NavView />
   <!-- HERO SECTION -->
@@ -53,15 +53,17 @@
    <div class="items-container">
 
     <div  v-for="item in items" v-bind:key="item.id" class="cards-container" >
-      <div class="card" @click="items.isActive = true, 
+      <div class="card" @click="
+      items.isActive = true,
+      console.log(items.isActive),
       clickedItem = [],
       clickedItem.push(item.attributes.name, item.attributes.description, item.attributes.price, item.attributes.image.data.attributes.url),
-       console.log(clickedItem)">
+       console.log(clickedItem)
+       ">
         <img class="card-img" :src="`${api_url}${item.attributes.image.data.attributes.url}`" />
         <p class="card-name first-line" id="card-on-hover">{{ item.attributes.name }}</p>
         <p class="card-price second-line" id="card-on-hover">€ {{ item.attributes.price }}</p>
         <p class="card-desc third-line" id="card-on-hover">{{ item.attributes.description }}</p>
-        <p id="item-id" style="display: none;">{{ item.id }}</p>
       </div>
     </div>
     
@@ -69,9 +71,9 @@
    <!-- ARTICLES GRID SECTION -->
 
 <!-- MODAL VIEW -->
-   <div v-if="items.isActive" class="modal-wrapper">
+   <div v-if="items.isActive" class="modal-wrapper" @click="closePopup()">
 
-    <ModalView>
+    <ModalView id="closer">
 
       <div class="modal-top">
 
@@ -115,7 +117,7 @@ export default {
     return {
       items: [],
       api_url: "http://localhost:1337",
-      clickedItem: []
+      clickedItem: [],
     }
   },
 
@@ -132,6 +134,16 @@ export default {
     this.items = this.items[0]
   },
 
+  methods: {
+    closePopup() {
+      if(event.target.id=="closer")
+{ 
+  this.items.isActive = false
+  }
+    }
+  }
+
+
 }
 </script>
 
@@ -142,6 +154,9 @@ export default {
 @media screen and (max-width: 1000px) {
   .hero-container {
     display: block;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
   }
 
   .benefits-container {
@@ -151,15 +166,39 @@ export default {
 
   #separation {
     font-size: 1.2em;
-    margin-right: 50%;
+    padding-right: 50%;
+    margin-left: -10%;
   }
 
   .items-container {
     display: grid;
-    grid-template-columns: repeat(1, 2fr);
+    grid-template-columns: repeat(1, 2fr) !important;
+    position: relative !important;
+    left: 8% !important;
 
   }
+
+  .modal-wrapper {
+    display: block !important;
+    width: 20% !important;
+  }
+
+  .modal-img {
+    height: fit-content;
+    width: 50% !important;
+  }
+
+  .modal-top {
+    display: block !important;
+  }
+
+  .close-modal {
+    margin-left: -50% !important;
+  }
 }
+
+
+
 
 .add-cart {
   border: none;
